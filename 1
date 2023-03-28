@@ -17,7 +17,5 @@ def coincidence_index(text):
 with open('D:\pk\pplicate.txt', 'r', encoding='utf-8') as f:
     text = f.read().replace('\n', '')  # удаляем переносы строк
 
-print(f'Индекс совпадения текста с пробелами: {coincidence_index(text)}')
+print(f'Индекс текста: {coincidence_index(text)}')
 
-text = text.replace(' ', '')  # удаляем пробелы
-print(f'Индекс совпадения текста без пробелов: {coincidence_index(text)}')
