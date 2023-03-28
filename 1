@@ -1,0 +1,23 @@
+v3 
+
+
+def coincidence_index(text):
+    N = len(text)
+    count_t = [0] * 32  # Русский алфавит: 32 символа
+    for symbol in text:
+        if symbol.isalpha() and symbol.lower() in 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя':
+            count_t[ord(symbol.lower()) - 1072] += 1  # ord() вернет числовой код символа, -1072 чтобы получить индекс в count_t
+    summa = 0
+    for i in range(32):
+        summa += count_t[i] * (count_t[i] - 1)
+    i = (summa * 1.0) / (N * (N - 1))
+    return i
+
+# Пример использования
+with open('D:\pk\pplicate.txt', 'r', encoding='utf-8') as f:
+    text = f.read().replace('\n', '')  # удаляем переносы строк
+
+print(f'Индекс совпадения текста с пробелами: {coincidence_index(text)}')
+
+text = text.replace(' ', '')  # удаляем пробелы
+print(f'Индекс совпадения текста без пробелов: {coincidence_index(text)}')
